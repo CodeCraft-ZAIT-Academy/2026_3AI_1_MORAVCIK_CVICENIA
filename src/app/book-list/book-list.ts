@@ -33,6 +33,14 @@ export class BookList {
       year: 2026,
       available: true,
       genre: 'Manga'
+    },
+    {
+      id: 4,
+      title: 'STEEL BALL RUN JoJos Bizarre Adventure vol.4',
+      author: 'Hirohiko Araki',
+      year: 2026,
+      available: false,
+      genre: 'Manga'
     }
   ];
 }

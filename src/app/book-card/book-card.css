@@ -1,6 +1,38 @@
 .book-card {
-    border: 1px solid #cccccc;
-    padding: 16px;
-    margin: 12px 0;
+    background-color: white;
+    border: 1px solid #dbe2ea;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+  
+  .book-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #1e3a5f;
+  }
+  
+  .book-card p {
+    margin: 6px 0;
+    color: #475569;
+  }
+  
+  .book-card button {
+    margin-top: 12px;
+    margin-right: 8px;
+    padding: 8px 14px;
+    border: none;
     border-radius: 8px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .book-card button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .book-card button:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
   }
