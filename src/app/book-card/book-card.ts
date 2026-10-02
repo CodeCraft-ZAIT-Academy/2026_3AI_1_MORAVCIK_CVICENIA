@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,6 +13,8 @@ import { Book } from '../book';
 })
 export class BookCard {
   book = input.required<Book>();
+  borrowed = output<void>();
+  returned = output<void>();
 
   showDetails: boolean = false;
  
@@ -24,13 +26,7 @@ export class BookCard {
   toggleFavorite(): void {
     this.book().favorite = !this.book().favorite;
   }
-  borrow(): void {
-    this.book().available = false;
-  }
-  
-  giveBack(): void {
-    this.book().available = true;
-  }
+ 
 
   genreColor(): string {
     switch (this.book().genre) {
@@ -53,5 +49,12 @@ export class BookCard {
       default:
         return '#94a3b8';
     }
+  }
+  borrow(): void {
+    this.borrowed.emit();
+  }
+
+  giveBack(): void {
+    this.returned.emit();
   }
 }
