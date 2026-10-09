@@ -9,7 +9,7 @@
     "test": "ng test",
     "serve:ssr:angular-gamelibrary": "node dist/angular-gamelibrary/server/server.mjs",
     "library-install": "ng add @angular/material",
-    "book-gen":"ng g c cart"
+    "book-gen":"ng g c books/components/book-form"
     
   },
   "private": true,

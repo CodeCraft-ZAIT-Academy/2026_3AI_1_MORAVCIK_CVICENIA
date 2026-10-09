@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BookList } from './book-list/book-list';
+import { BookList } from './books/components/book-list/book-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
