@@ -12,4 +12,5 @@ import { Book } from '../../book';
 })
 export class BookDetail {
   book = input.required<Book>();
+  
 }
