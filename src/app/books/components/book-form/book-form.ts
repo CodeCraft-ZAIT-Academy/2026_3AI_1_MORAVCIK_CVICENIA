@@ -38,8 +38,12 @@ export class BookForm implements OnInit {
   }
 
   save(form: NgForm): void {
-    this.draft = createEmptyBook();
-    form.resetForm(this.draft);
+    this.saved.emit({ ...this.draft });
+  
+    if (!this.isEditMode()) {
+      this.draft = createEmptyBook();
+      form.resetForm(this.draft);
+    }
   }
 
   cancel(): void {
