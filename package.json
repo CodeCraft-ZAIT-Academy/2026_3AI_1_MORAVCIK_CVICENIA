@@ -10,6 +10,7 @@
     "serve:ssr:angular-gamelibrary": "node dist/angular-gamelibrary/server/server.mjs",
     "library-install": "ng add @angular/material",
     "book-gen":"ng generate service books/book.service"
+     
     
   },
   "private": true,
