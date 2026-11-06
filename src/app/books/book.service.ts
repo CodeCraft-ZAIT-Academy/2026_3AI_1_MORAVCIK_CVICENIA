@@ -53,7 +53,7 @@ export class BookService {
 
   readonly maxBorrowed: number = 10;
   private readonly _books = signal<Book[]>(
-    this.limitBorrowed(this.myBooks.concat(generateBooks(40, 4))),
+    this.limitBorrowed(this.myBooks.concat(generateBooks(40, 5))),
   );
   readonly books = this._books.asReadonly();
 

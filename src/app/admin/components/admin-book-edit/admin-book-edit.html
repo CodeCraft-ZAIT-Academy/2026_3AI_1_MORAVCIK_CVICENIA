@@ -1,0 +1,15 @@
+<div style="padding: 24px; max-width: 600px; margin: 0 auto;">
+    @if (!isEditMode()) {
+      <h1>Nová kniha</h1>
+      <app-book-form (saved)="save($event)" (cancelled)="cancel()"></app-book-form>
+    } @else if (book()) {
+      <h1>Úprava knihy</h1>
+      <app-book-form [book]="book()" (saved)="save($event)" (cancelled)="cancel()"></app-book-form>
+    } @else {
+      <div style="background: #fef2f2; border: 1px solid #fee2e2; padding: 16px; border-radius: 8px; color: #991b1b; margin-top: 24px;">
+        <p style="margin: 0; font-weight: 500;">Kniha s číslom <strong>{{ id() }}</strong> v knižnici neexistuje.</p>
+        <button mat-button (click)="cancel()" style="margin-top: 12px; color: #334155;">Späť na prehľad</button>
+      </div>
+    }
+  </div>
+  

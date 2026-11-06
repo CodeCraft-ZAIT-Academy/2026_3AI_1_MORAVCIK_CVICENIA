@@ -1,0 +1,60 @@
+<div style="padding: 24px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+      <h1>Správa knižnice (Admin)</h1>
+      <a mat-flat-button routerLink="/admin/new">
+        <mat-icon>add</mat-icon> Pridať knihu
+      </a>
+    </div>
+  
+    <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+      <thead>
+        <tr style="background-color: #f1f5f9; text-align: left; border-bottom: 2px solid #cbd5e1;">
+          <th style="padding: 12px;">Číslo</th>
+          <th style="padding: 12px;">Názov</th>
+          <th style="padding: 12px;">Autor</th>
+          <th style="padding: 12px;">Rok</th>
+          <th style="padding: 12px;">Stav</th>
+          <th style="padding: 12px; text-align: center;">Akcie</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (book of books(); track book.id) {
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 12px;">{{ book.id }}</td>
+            <td style="padding: 12px;">
+              <a [routerLink]="['/books', book.id]" style="font-weight: 500; color: #1e40af; text-decoration: none;">
+                {{ book.title }}
+              </a>
+            </td>
+            <td style="padding: 12px;">{{ book.author }}</td>
+            <td style="padding: 12px;">{{ book.year }}</td>
+            <td style="padding: 12px;">
+              @if (book.available) {
+                <span style="color: green;">Dostupná</span>
+              } @else {
+                <span style="color: red;">Vypočičaná</span>
+              }
+            </td>
+            <td style="padding: 12px; text-align: center;">
+              @if (confirmingDeleteId() === book.id) {
+                <div style="display: flex; gap: 4px; justify-content: center; align-items: center;">
+                  <span style="font-size: 0.85rem; color: #b91c1c; margin-right: 4px;">Zmazať?</span>
+                  <button mat-button (click)="cancelDelete()">Nie</button>
+                  <button mat-flat-button color="warn" style="background-color: #dc2626; color: white;" (click)="confirmDelete(book)">Áno</button>
+                </div>
+              } @else {
+                <div style="display: flex; gap: 4px; justify-content: center;">
+                  <a mat-icon-button [routerLink]="['/admin', book.id, 'edit']" aria-label="Upraviť" title="Upraviť">
+                    <mat-icon>edit</mat-icon>
+                  </a>
+                  <button mat-icon-button (click)="askDelete(book)" aria-label="Zmazať" title="Zmazať" style="color: #dc2626;">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>

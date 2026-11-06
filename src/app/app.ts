@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
-import { BookList } from './books/components/book-list/book-list';
+import { Component, inject } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { BookService } from './books/book.service';
 
 @Component({
   selector: 'app-root',
-  imports: [BookList, MatToolbarModule, MatIconModule],
+  imports: [
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatBadgeModule,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
+  private bookService = inject(BookService);
+  readonly borrowedBooks = this.bookService.borrowedBooks;
 }

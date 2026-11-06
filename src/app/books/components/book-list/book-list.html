@@ -1,5 +1,5 @@
 <section>
-  <mat-accordion multi>
+  <!--<mat-accordion multi>
     <mat-expansion-panel #addPanel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -24,7 +24,7 @@
 
       <app-cart [books]="borrowedBooks()" (returned)="giveBack($event)"></app-cart>
     </mat-expansion-panel>
-  </mat-accordion>
+  </mat-accordion> -->
 
   <h2>Zoznam kníh</h2>
 
@@ -67,12 +67,27 @@
         <mat-option value="rating">Hodnotenia (najlepšie)</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <button 
+      mat-stroked-button 
+      [color]="favoritesOnly() ? 'primary' : ''"
+      (click)="favoritesOnly.update(v => !v); firstPage()"
+    >
+      <mat-icon>{{ favoritesOnly() ? 'favorite' : 'favorite_border' }}</mat-icon>
+      {{ favoritesOnly() ? 'Všetky' : 'Iba obľúbené' }}
+    </button>
+  
+
+    
+
+
   </div>
 
   @if (visibleBooks().length > 0) {
     <p>Zobrazené knihy {{ firstShown() }} – {{ lastShown() }} z {{ visibleBooks().length }}</p>
   }
-
+  <p>Všetkých kníh: {{ totalBooks() }}</p>
+  <p>Dostupných: {{ availableBooks().length }}</p>
   <div class="page-size">
     <span>Kníh na stranu:</span>
     @for (size of pageSizes; track size) {
@@ -81,15 +96,13 @@
       </button>
     }
   </div>
-
+      
   @for (book of visibleBooks(); track book.id; let i = $index) {
     @if (isOnCurrentPage(i)) {
       <app-book-card
         [book]="book"
         (borrowed)="borrow(book)"
         (returned)="giveBack(book)"
-        (edited)="updateBook($event)"
-        (deleted)="deleteBook(book)"
         (favoriteToggled)="toggleFavorite(book)"
       >
       </app-book-card>

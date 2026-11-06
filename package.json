@@ -9,7 +9,7 @@
     "test": "ng test",
     "serve:ssr:angular-gamelibrary": "node dist/angular-gamelibrary/server/server.mjs",
     "library-install": "ng add @angular/material",
-    "book-gen":"ng generate service books/book.service"
+    "gen":"ng g c shared/components/not-found"
      
     
   },

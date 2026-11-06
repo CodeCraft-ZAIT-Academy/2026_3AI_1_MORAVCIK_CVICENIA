@@ -1,0 +1,40 @@
+.book-page {
+    margin-bottom: 16px;
+    padding: 16px;
+    border-left: 6px solid #94a3b8;
+  }
+  
+  .book-page.unavailable {
+    background-color: #f1f5f9;
+  }
+  
+  .book-page.favorite {
+    background-color: #fffbeb;
+    box-shadow: 0 0 0 2px #f59e0b;
+  }
+  
+  .status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .status-available {
+    background-color: #16a34a;
+  }
+  
+  .status-borrowed {
+    background-color: #dc2626;
+  }
+  
+  .favorite-icon {
+    color: #f59e0b;
+    font-variation-settings: 'FILL' 1;
+  }
+  
+  .not-found {
+    color: #b91c1c;
+  }

@@ -1,8 +1,55 @@
 <mat-toolbar class="toolbar">
+  <a class="brand" routerLink="/books" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: inherit;">
     <mat-icon>menu_book</mat-icon>
     <span>Library Management System</span>
-  </mat-toolbar>
-  
-  <main>
-    <app-book-list></app-book-list>
-  </main>
+  </a>
+
+  <!-- Tento spacer odtlačí navigačné menu na pravú stranu lišty -->
+  <span style="flex: 1 1 auto;"></span>
+
+  <nav aria-label="Hlavná navigácia" style="display: flex; gap: 8px;">
+    <a
+      mat-icon-button
+      routerLink="/books"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      aria-label="Knihy"
+      title="Knihy"
+    >
+      <mat-icon>library_books</mat-icon>
+    </a>
+    
+    <a
+      mat-icon-button
+      routerLink="/cart"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      aria-label="Košík"
+      title="Košík"
+    >
+      <mat-icon
+        aria-hidden="false"
+        [matBadge]="borrowedBooks().length"
+        [matBadgeHidden]="borrowedBooks().length === 0"
+        matBadgeDescription="Počet požičaných kníh"
+        matBadgeColor="warn"
+        >shopping_cart</mat-icon
+      >
+    </a>
+    
+    <a
+      mat-icon-button
+      routerLink="/admin"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      aria-label="Správa kníh"
+      title="Správa kníh"
+    >
+      <mat-icon>admin_panel_settings</mat-icon>
+    </a>
+  </nav>
+</mat-toolbar>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

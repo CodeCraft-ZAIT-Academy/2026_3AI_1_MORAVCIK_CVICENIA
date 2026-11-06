@@ -1,0 +1,44 @@
+@if (book(); as book) {
+    <mat-card class="book-page" [class.unavailable]="!book.available" [class.favorite]="book.favorite">
+      <mat-card-header>
+        <mat-card-title>{{ book.title }}</mat-card-title>
+        <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+      </mat-card-header>
+  
+      <mat-card-content>
+        @if (book.available) {
+          <p class="status status-available">Dostupná</p>
+        } @else {
+          <p class="status status-borrowed">Vypožičaná</p>
+        }
+  
+        <app-book-detail [book]="book" />
+      </mat-card-content>
+  
+      <mat-card-actions>
+        @if (book.available) {
+          <button matButton="filled" (click)="borrow(book.id)">Vypožičať</button>
+        } @else {
+          <button matButton="filled" (click)="giveBack(book.id)">Vrátiť</button>
+        }
+  
+        <button
+          matIconButton
+          [attr.aria-label]="book.favorite ? 'Odobrať z obľúbených' : 'Pridať medzi obľúbené'"
+          (click)="toggleFavorite(book.id)"
+        >
+          @if (book.favorite) {
+            <mat-icon class="favorite-icon">star</mat-icon>
+          } @else {
+            <mat-icon>star_border</mat-icon>
+          }
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  } @else {
+    <p class="not-found">Kniha s číslom {{ id() }} v knižnici neexistuje.</p>
+  }
+  
+  <a matButton routerLink="/books">Späť na zoznam kníh</a>
+  ﻿
+  
